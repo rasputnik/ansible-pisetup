@@ -8,9 +8,11 @@ img: imgs/{{ raspbian_version }}.img
 
 # mount both partitions to edit contents
 img_parts:
-  - dev: /dev/mapper/loop0p1
-    path: /rasfat
+  boot:
+    dev: /dev/mapper/loop0p1
+    path: /img_vfat
     type: vfat
-  - dev: /dev/mapper/loop0p2
-    path: /rasext4
+  root:
+    dev: /dev/mapper/loop0p2
+    path: /img_ext4
     type: ext4

@@ -9,21 +9,21 @@
   become: yes
   file:
     state: directory
-    path: "{{ item.path }}"
-  with_items: "{{ img_parts }}"
+    path: "{{ item.value.path }}"
+  with_dict: "{{ img_parts }}"
 
 - name: map partitions from {{ img }}
   become: yes
   command: "kpartx -a /vagrant/{{ img }}"
   args:
-    creates: "{{ img_parts[0].dev }}"
+    creates: "{{ img_parts.boot.dev }}"
 
 - name: mount partitions
   become: yes
   mount:
-    path: "{{ item.path }}"
+    path: "{{ item.value.path }}"
     opts: loop
-    src: "{{ item.dev }}"
-    fstype: "{{ item.type }}"
+    src: "{{ item.value.dev }}"
+    fstype: "{{ item.value.type }}"
     state: mounted
-  with_items: "{{ img_parts }}"
+  with_dict: "{{ img_parts }}"
