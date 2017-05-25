@@ -1,0 +1,14 @@
+---
+
+- name: get the .zip
+  delegate_to: localhost
+  get_url:
+    url: "{{ zip_url }}"
+    dest: "{{ zip_dest }}"
+
+- name: extract {{ zip_dest }}
+  delegate_to: localhost
+  unarchive:
+    src: "{{ zip_dest }}"
+    dest: "imgs"
+    creates: "{{ img }}"

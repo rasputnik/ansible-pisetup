@@ -15,29 +15,31 @@ I'm testing on Mac OSX Sierra with a raspbian jessie lite image.
 ## boot the VM
 
 This VM only exists to mount the image so we can mess with it.
+I'm using *boxcutter/centos72*, anything that can use yum should
+work.
 
   vagrant up
 
 Verify boot with:
 
-  ansible -i vagrant -m ping all
+  ansible -i hosts -m ping all
+
+## enter your settings
+
+All settings are in *group_vars/all*  for simplicity.
+Edit with your:
+
+* wifi SSID
+* wifi passphrase
+* path to an SSH public key _(NB: Raspbian sshd doesn't trust DSA keys)_
 
 ## time for Ansible
 
-You can verify connectivity by running:
+This should set the appropriate wifi config, etc.
 
-    ansible -i hosts all -m ping
+    ansible -i hosts prep.yml
 
-and you should see lots of lovely facts about your pi flowing back.
-
-Run the main play with:
-
-    ansible-playbook -i hosts site.yml
-
-## vars
-
-* role-specific vars live in $rolename/defaults/main.yml
-* 'globals' _(e.g. ansible_ssh_user)_ live in 'hosts'
+You can verify by 'vagrant ssh' and poking around under /ras**
 
 ### BUGS
 

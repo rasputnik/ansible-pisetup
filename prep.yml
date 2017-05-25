@@ -1,0 +1,6 @@
+---
+
+- hosts: prepvm
+  roles:
+    - get_zip
+    - mountparts
