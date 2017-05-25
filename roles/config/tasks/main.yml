@@ -1,0 +1,21 @@
+---
+
+- name: enable ssh at boot
+  become: yes
+  file:
+    state: touch
+    path: "{{ img_parts.boot.path }}/ssh"
+
+- name: enable wifi DHCP
+  become: yes
+  lineinfile:
+    path: "{{ img_parts.root.path }}/etc/network/interfaces"
+    regexp: '^iface {{ item }} inet '
+    line: 'iface {{ item }} inet dhcp'
+  with_items:
+    - wlan0
+    - wlan1
+
+- name: TODO SETUP WIFI
+  debug:
+    msg: not implemented

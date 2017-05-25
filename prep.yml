@@ -4,3 +4,4 @@
   roles:
     - get_zip
     - mountparts
+    - config
