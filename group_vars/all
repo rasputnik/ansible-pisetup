@@ -16,3 +16,12 @@ img_parts:
     dev: /dev/mapper/loop0p2
     path: /img_ext4
     type: ext4
+
+# wifi settings for wpa_supplicant
+network:
+  ssid: "my network name"
+  psk: "my network password"
+  proto: RSN
+  key_mgmt: WPA-PSK
+  pairwise: CCMP
+  auth_alg: OPEN

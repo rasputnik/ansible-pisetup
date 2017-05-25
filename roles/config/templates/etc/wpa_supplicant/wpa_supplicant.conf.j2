@@ -1,0 +1,12 @@
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+  ssid="{{ network.ssid }}"
+  psk="{{ network.psk }}"
+  proto={{ network.proto }}
+  key_mgmt={{ network.key_mgmt }}
+  pairwise={{ network.pairwise }}
+  auth_alg={{ network.auth_alg }}
+}

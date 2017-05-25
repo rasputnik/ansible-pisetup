@@ -16,6 +16,11 @@
     - wlan0
     - wlan1
 
-- name: TODO SETUP WIFI
-  debug:
-    msg: not implemented
+- name: set wifi PSK and SSID
+  become: yes
+  template:
+    src: etc/wpa_supplicant/wpa_supplicant.conf.j2
+    dest: "{{ img_parts.root.path }}/etc/wpa_supplicant/wpa_supplicant.conf"
+    mode: 0600
+    owner: root
+    group: root
