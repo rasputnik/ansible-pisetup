@@ -14,12 +14,10 @@ Tested on
 ## enter your settings
 
 All settings are in *group_vars/all*  for simplicity.
-Edit with your:
+Enter your:
 
-* wifi SSID, passphrase etc:  the network.x dict
-* image versions, etc. : the raspbian_version and img_url vars 
-
-If it's easier, you can override each var using the '-e key=value' syntax.
+* wifi SSID, passphrase etc:  the *network.x* dict
+* _(optionally)_ image versions, etc. : the *raspbian_version* and *img_url* vars 
 
 ## time for Ansible
 
@@ -27,9 +25,16 @@ The play should run with:
 
     ansible -i hosts prep.yml
 
-(barring any extra '-e' options as discussed)
+If you want to setup the 'pi' user for RSA (passwordless) logins, run:
+ 
+    ansible -i hosts prep.yml -e pubkey=/full/path/to/your/publickey
+
+where the file */full/path/to/your/publickey* has an RSA public key
+_(DSA keys are not supported in recent Jessie versions)_.
 
 When it's done, youll have a .img in the *imgs/* folder, with your SSID in the filename.
+
+dd that to an SD card and boot it, you should have a working pi.
 
 ### BUGS
 

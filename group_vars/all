@@ -34,3 +34,16 @@ network:
   key_mgmt: WPA-PSK
   pairwise: CCMP
   auth_alg: OPE
+
+# if this is not defined, no SSH pubkey is copied to the image
+# - Raspbian does not support DSA keys (I found out the hard way)
+# NB: this should be a full path - $HOME is not going to work.
+#
+# pubkey: /home/you/.ssh/id_rsa.pub
+
+# authorized_keys file to edit
+# NB! 'vagrant' user on the VM is uid 1000, so is 'pi' user in the image
+# probably shouldn't abuse this fact, but...
+ssh:
+  file: "{{ img_parts.root.path }}/home/pi/.ssh/authorized_keys"
+  user: vagrant

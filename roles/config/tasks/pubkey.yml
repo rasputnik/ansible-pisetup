@@ -1,0 +1,8 @@
+---
+
+- name: copy {{ pubkey }} to {{ ssh.file }}
+  authorized_key:
+    user: "{{ ssh.user }}"
+    path: "{{ ssh.file }}"
+    key: "{{ lookup('file', pubkey) }}"
+    manage_dir: yes
