@@ -1,0 +1,14 @@
+---
+
+- name: unmount partitions
+  become: yes
+  mount:
+    path: "{{ item.value.path }}"
+    state: unmounted
+  with_dict: "{{ img_parts }}"
+
+- name: copy {{ img }} to {{ output_img }}
+  copy:
+    src: "{{ img }}"
+    dest: "{{ output_img }}"
+    remote_src: yes

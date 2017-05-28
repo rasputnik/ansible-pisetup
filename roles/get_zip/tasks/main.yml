@@ -1,14 +1,18 @@
 ---
 
-- name: get the .zip
-  delegate_to: localhost
+- name: get {{ zip_url }}
   get_url:
     url: "{{ zip_url }}"
     dest: "{{ zip_dest }}"
 
+- name: install 'unzip'
+  become: yes
+  yum:
+    name: unzip
+
 - name: extract {{ zip_dest }}
-  delegate_to: localhost
   unarchive:
+    remote_src: yes
     src: "{{ zip_dest }}"
-    dest: "imgs"
+    dest: "{{ img_dir }}"
     creates: "{{ img }}"

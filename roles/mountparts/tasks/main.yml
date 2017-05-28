@@ -12,13 +12,13 @@
     path: "{{ item.value.path }}"
   with_dict: "{{ img_parts }}"
 
-- name: map partitions from {{ img }}
+- name: map partitions from {{ img }} into /dev/mapper
   become: yes
-  command: "kpartx -a /vagrant/{{ img }}"
+  command: "kpartx -a {{ img }}"
   args:
     creates: "{{ img_parts.boot.dev }}"
 
-- name: mount partitions
+- name: mount partitions from /dev/mapper
   become: yes
   mount:
     path: "{{ item.value.path }}"

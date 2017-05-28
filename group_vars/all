@@ -2,9 +2,18 @@ ansible_ssh_user: vagrant
 ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
 
 raspbian_version: 2017-04-10-raspbian-jessie-lite
+
 zip_url: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2017-04-10/{{ raspbian_version }}.zip
-zip_dest: imgs/{{ raspbian_version }}.zip
-img: imgs/{{ raspbian_version }}.img
+zip_dest: /vagrant/imgs/{{ raspbian_version }}.zip
+
+# edits to the .img on /vagrant do not persist,
+# so we move it here before we mount it
+img_dir: /var/tmp
+img: "{{ img_dir }}/{{ raspbian_version }}.img"
+
+# copy finished image back to here once you're done;
+# /vagrant is mounted from host, so this saves a copy
+output_img: /vagrant/imgs/{{ raspbian_version }}.{{ network.ssid }}.img
 
 # mount both partitions to edit contents
 img_parts:
@@ -24,4 +33,4 @@ network:
   proto: RSN
   key_mgmt: WPA-PSK
   pairwise: CCMP
-  auth_alg: OPEN
+  auth_alg: OPE
