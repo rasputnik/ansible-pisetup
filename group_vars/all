@@ -33,7 +33,7 @@ network:
   proto: RSN
   key_mgmt: WPA-PSK
   pairwise: CCMP
-  auth_alg: OPE
+  auth_alg: OPEN
 
 # if this is not defined, no SSH pubkey is copied to the image
 # - Raspbian does not support DSA keys (I found out the hard way)
