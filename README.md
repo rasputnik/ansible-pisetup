@@ -24,11 +24,11 @@ Enter your:
 
 The play should run with:
 
-    ansible -i hosts prep.yml
+    ansible-playbook -i hosts prep.yml
 
 If you want to setup the 'pi' user for RSA (passwordless) logins, run:
  
-    ansible -i hosts prep.yml -e pubkey=/full/path/to/your/publickey
+    ansible-playbook -i hosts prep.yml -e pubkey=/full/path/to/your/publickey
 
 where the file */full/path/to/your/publickey* has an RSA public key
 _(DSA keys are not supported in recent Jessie versions)_.
