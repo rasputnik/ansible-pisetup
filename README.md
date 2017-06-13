@@ -1,5 +1,5 @@
-Raspberry Pi
-=============
+Raspberry Pi Image Prepper 
+==========================
 
 Sets up a Raspberry Pi (Raspbian) disk image for wifi and ssh
 (intended to make headless installs easier)
@@ -10,6 +10,7 @@ Tested on
 * this Jessie lite image : http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2017-04-10/2017-04-10-raspbian-jessie-lite.zip
 * Ansible 2.x
 * Vagrant ( I'm using *boxcutter/centos72* but anything yum-based should be fine)
+* the Vagrant [hostmanager plugin](https://github.com/smdahlen/vagrant-hostmanager)
 
 ## enter your settings
 
