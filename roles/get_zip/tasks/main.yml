@@ -1,6 +1,6 @@
 ---
 
-- name: get {{ zip_url }}
+- name: get {{ zip_url }} => {{ zip_dest }}
   get_url:
     url: "{{ zip_url }}"
     dest: "{{ zip_dest }}"

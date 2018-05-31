@@ -1,9 +1,9 @@
 ansible_ssh_user: vagrant
 ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
 
-raspbian_version: 2017-04-10-raspbian-jessie-lite
+raspbian_version: 2018-04-18-raspbian-stretch-lite
 
-zip_url: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2017-04-10/{{ raspbian_version }}.zip
+zip_url: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-04-19/{{ raspbian_version }}.zip
 zip_dest: /vagrant/imgs/{{ raspbian_version }}.zip
 
 # edits to the .img on /vagrant do not persist,
